@@ -120,7 +120,7 @@ function App(){
     <main>
       <section className="hero">
         <img className="hero-art" src="/assets/hero-orbit-v2.webp" alt="Сеть цифровых потоков вокруг Клубка AI-агентов"/>
-        <div className="hero-copy reveal"><p className="eyebrow">КОМАНДА АВТОНОМНЫХ AI-АГЕНТОВ</p><h1>Делегируйте<br/><em>результат</em></h1><p className="hero-sub">Клубок планирует работу, подключает инструменты и доводит задачу до конца.</p><div className="hero-actions"><a className="primary" href="#waitlist">Попробовать</a><a className="text-link" href="#how">Демо продукта</a></div></div>
+        <div className="hero-copy reveal"><p className="eyebrow">КОМАНДА АВТОНОМНЫХ AI-АГЕНТОВ</p><h1><span>Делегируйте рутину,</span><em>получайте результат</em></h1><p className="hero-sub">Клубок планирует работу, подключает инструменты и доводит задачу до конца.</p><div className="hero-actions"><a className="primary" href="#waitlist">Попробовать</a><a className="text-link" href="#how">Демо продукта</a></div></div>
       </section>
 
       <section className="proof reveal"><p>Одна команда вместо цифрового шума</p><div>{['исследует','пишет','планирует','отвечает','связывает сервисы'].map(x=><span key={x}>{x}</span>)}</div></section>
