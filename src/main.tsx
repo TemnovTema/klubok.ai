@@ -129,7 +129,7 @@ function App(){
 
       <section id="how" className="product-section"><div className="section-copy reveal"><h2>Видно, кто что делает.<br/>И зачем.</h2><p>Каждый агент показывает план, источники и ход работы. Можно уточнить задачу, поставить на паузу или забрать управление.</p></div><div className="reveal"><ProductPanel/></div></section>
 
-      <section className="setup reveal"><div className="setup-copy"><span className="plain-label">СОЗДАНИЕ АГЕНТА</span><h2>Объясните задачу<br/>как коллеге</h2><p>Клубок сам разложит запрос на роль, источники и правила. Пройдите три шага в прототипе справа.</p></div><AgentBuilder/></section>
+      <section className="setup reveal"><div className="setup-copy"><span className="plain-label">СОЗДАНИЕ АГЕНТА</span><h2>Объясните задачу<br/>как коллеге</h2><p>Клубок сам разложит запрос на роль, источники и правила. Пройдите три шага в интерактивном прототипе.</p></div><AgentBuilder/></section>
 
       <UseCases/>
 

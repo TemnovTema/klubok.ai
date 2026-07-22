@@ -25,3 +25,93 @@
 @keyframes builderIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media(max-width:800px){.builder-progress{padding:0 14px}.builder-progress button{gap:5px}.builder-progress button span{font-size:8px}.builder-request{margin:16px 14px 0 10%}.builder-panel{padding:22px 14px 12px;min-height:350px}.builder-fields,.tool-picker{grid-template-columns:1fr}.builder-success{min-height:600px;padding:50px 24px}.builder-actions{padding:14px}.builder-panel h3,.builder-success h3{font-size:21px}}
 @media(prefers-reduced-motion:reduce){.builder-panel,.builder-success{animation:none}}
+
+/* Mobile narrative audit */
+@media(max-width:800px){
+  h2{text-wrap:balance}
+  .logo{width:max-content;justify-self:start}
+  .section-copy p,.setup-copy p,.cases-title p,.control-copy>p{text-wrap:pretty}
+
+  .proof{padding:26px 20px 34px}
+  .proof p{margin-bottom:16px}
+  .proof div{flex-wrap:nowrap;overflow-x:auto;margin-right:-20px;padding:0 20px 4px 0;scroll-snap-type:x proximity;scrollbar-width:none}
+  .proof div::-webkit-scrollbar{display:none}
+  .proof span{flex:0 0 auto;scroll-snap-align:start;padding:9px 13px;font-size:12px}
+
+  .live-demo{padding:78px 20px 84px;gap:30px}
+  .demo-intro h2{font-size:35px;line-height:1.04;margin:18px 0 20px}
+  .demo-intro p{font-size:14px;line-height:1.6}
+  .demo-console{min-height:0;padding:14px;border-radius:14px}
+  .demo-presets{margin-right:-14px;padding-bottom:17px}
+  .demo-presets button{min-height:44px;padding:10px 13px}
+  .demo-console textarea{min-height:90px;padding:13px;font-size:13px}
+  .demo-run{width:100%;margin:10px 0 16px}
+  .agent-run{min-height:220px}
+  .demo-empty{min-height:190px;padding:0 18px}
+  .run-row{grid-template-columns:28px 1fr auto;padding:11px 0}
+
+  .product-section{padding:82px 20px 92px}
+  .product-section .section-copy{margin-bottom:34px}
+  .product-section h2{font-size:36px;line-height:1.04;margin:0 0 20px}
+  .product-section .section-copy p{font-size:14px;line-height:1.6}
+  .product-window{border-radius:14px}
+  .window-bar{height:40px;padding:0 12px}
+  .window-bar b{margin-left:6px;font-size:9px}
+  .workspace{min-height:0}
+  .activity{padding:18px}
+  .activity-head{padding-bottom:20px}
+  .activity-head h3{font-size:19px;line-height:1.25}
+  .activity-head button{padding:6px 10px;font-size:10px}
+  .activity-head button{min-height:40px}
+  .thread-line{padding:19px 0}
+  .steps article{gap:10px;padding:15px 0}
+  .steps strong{font-size:13px}
+  .steps p{font-size:11px;line-height:1.45}
+
+  .setup{margin:16px 16px 92px;padding:44px 16px 16px;gap:30px;border-radius:16px}
+  .setup-copy h2{font-size:34px;line-height:1.05;margin:17px 0 20px}
+  .setup-copy p{font-size:14px;line-height:1.6}
+  .builder-top{padding:15px 14px}
+  .builder-request{margin:14px 14px 0 7%;padding:13px 14px;font-size:11px}
+  .builder-panel{min-height:300px;padding:20px 14px 10px}
+  .builder-fields{margin-top:18px}
+  .builder-actions{padding:12px 14px 16px}
+  .builder-actions button{min-height:44px}
+  .builder-success{min-height:500px}
+
+  .cases{padding:82px 20px 94px;overflow:hidden}
+  .cases-title{margin-bottom:38px}
+  .cases-title h2{font-size:40px;line-height:1.02;margin:0 0 20px}
+  .cases-title p{font-size:14px;line-height:1.6}
+  .case-grid{display:grid;grid-auto-flow:column;grid-auto-columns:min(82vw,320px);grid-template-columns:none;gap:12px;height:auto;overflow-x:auto;margin-right:-20px;padding-right:20px;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .case-grid::-webkit-scrollbar{display:none}
+  .case{height:470px;scroll-snap-align:start}
+  .case-copy{left:20px;right:20px;bottom:22px}
+  .case-copy h3{font-size:clamp(25px,9cqw,34px)}
+  .case-copy p{font-size:12px;line-height:1.5}
+
+  .control{padding:86px 20px 96px;gap:48px}
+  .control-copy h2{font-size:36px;line-height:1.04;margin:0 0 20px}
+  .control-copy>p{font-size:14px;line-height:1.6}
+  .autonomy-box{margin-top:28px;padding:16px}
+  .autonomy-head{gap:12px;font-size:10px}
+  .autonomy-options{grid-template-columns:repeat(2,1fr);gap:6px;margin:18px 0 15px}
+  .autonomy-options button{min-width:0;padding:11px 10px;text-align:left}
+  .autonomy-options button i{margin-bottom:8px}
+  .autonomy-options button span{font-size:10px}
+  .autonomy-box>p{font-size:13px;line-height:1.45}
+  .phone{width:min(320px,100%);padding:18px;border-radius:30px}
+  .phone-top{margin-bottom:40px}
+  .phone h3{font-size:23px;line-height:1.15}
+  .mail{margin:18px 0}
+
+  .manifest{padding:105px 20px 112px;text-align:left}
+  .manifest>p{max-width:280px;font-size:14px;line-height:1.55}
+  .manifest h2{font-size:34px;line-height:1.05;margin-top:24px}
+
+  .cta{padding:76px 20px 82px;gap:38px}
+  .cta h2{font-size:46px;line-height:.98;margin-top:17px}
+  .cta label{font-size:11px}
+  .cta input{font-size:16px}
+  .cta small{line-height:1.45}
+}
