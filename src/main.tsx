@@ -90,6 +90,20 @@ function ControlSection(){
   return <section id="control" className="control reveal"><div className={'phone autonomy-'+level}><div className="phone-top"><Logo/><span>09:41</span></div><small>{phoneState.label}</small><h3>{phoneState.title}</h3><p>{phoneState.copy}</p><div className="mail"><span>Анна, Studio Forma</span><p>Анна, добрый день! Подтверждаю, что материалы будут готовы…</p></div><button>{phoneState.button}</button><a>{phoneState.secondary}</a></div><div className="control-copy"><h2>Автономность,<br/>которую выбираете вы</h2><p>Переключите режим и посмотрите, как изменится поведение агента в одной и той же ситуации.</p><AutonomyControl level={level} setLevel={setLevel}/></div></section>
 }
 
+function AgentBuilder(){
+  const [step,setStep]=useState(0)
+  const [tools,setTools]=useState(['Web','Drive'])
+  const [permission,setPermission]=useState('Черновики')
+  const toggleTool=(tool:string)=>setTools(current=>current.includes(tool)?current.filter(item=>item!==tool):[...current,tool])
+  if(step===3) return <div className="builder builder-success"><span className="builder-pulse">И</span><small>АГЕНТ СОЗДАН</small><h3>Утренний исследователь</h3><p>Первая сводка появится завтра в 08:30. До этого момента можно изменить сценарий.</p><div className="builder-success-meta"><span>{tools.join(' + ')}</span><span>{permission}</span></div><button onClick={()=>setStep(0)}>Изменить настройки</button></div>
+  const panels=[
+    <div className="builder-panel" key="task"><span className="builder-label">Клубок понял задачу</span><h3>Утренний исследователь</h3><p>Собирает новые материалы по активным проектам и оставляет короткую сводку.</p><div className="builder-fields"><label><span>Когда запускать</span><b>Будни, 08:30</b></label><label><span>Формат результата</span><b>Сводка со ссылками</b></label></div></div>,
+    <div className="builder-panel" key="tools"><span className="builder-label">Подключённые источники</span><h3>Где агент будет искать</h3><p>Выберите рабочие пространства. Доступ можно отозвать в любой момент.</p><div className="tool-picker">{['Web','Drive','Notion','Slack'].map(tool=><button key={tool} className={tools.includes(tool)?'selected':''} onClick={()=>toggleTool(tool)}><i>{tools.includes(tool)?'✓':'+'}</i><span>{tool}</span><small>{tool==='Web'?'Открытые источники':tool==='Drive'?'Файлы проектов':tool==='Notion'?'База знаний':'Командные каналы'}</small></button>)}</div></div>,
+    <div className="builder-panel" key="rules"><span className="builder-label">Безопасные границы</span><h3>Что агент может делать сам</h3><p>Для первого запуска рекомендуем сохранять всё в черновики.</p><div className="permission-picker">{['Только наблюдать','Черновики','Автономно'].map((item,i)=><button key={item} className={permission===item?'selected':''} onClick={()=>setPermission(item)}><i>{i+1}</i><span><b>{item}</b><small>{i===0?'Ничего не меняет':i===1?'Готовит результат для проверки':'Работает в заданных границах'}</small></span></button>)}</div></div>,
+  ]
+  return <div className="builder"><div className="builder-top"><span>Новый агент</span><em>Черновик сохранён</em></div><div className="builder-progress">{['Задача','Инструменты','Границы'].map((name,i)=><button key={name} className={step===i?'active':step>i?'done':''} onClick={()=>setStep(i)}><i>{step>i?'✓':i+1}</i><span>{name}</span></button>)}</div><div className="builder-request">Хочу, чтобы каждое утро агент собирал новые материалы по моим проектам и оставлял короткую сводку.</div>{panels[step]}<div className="builder-actions">{step>0&&<button className="builder-back" onClick={()=>setStep(step-1)}>Назад</button>}<button className="builder-next" onClick={()=>setStep(step===2?3:step+1)}>{step===2?'Создать агента':'Продолжить'}</button></div></div>
+}
+
 function WaitlistForm(){
   const [email,setEmail]=useState('')
   const [status,setStatus]=useState<'idle'|'loading'|'success'|'error'>('idle')
@@ -115,7 +129,7 @@ function App(){
 
       <section id="how" className="product-section"><div className="section-copy reveal"><h2>Видно, кто что делает.<br/>И зачем.</h2><p>Каждый агент показывает план, источники и ход работы. Можно уточнить задачу, поставить на паузу или забрать управление.</p></div><div className="reveal"><ProductPanel/></div></section>
 
-      <section className="setup reveal"><div className="setup-copy"><span className="plain-label">СОЗДАНИЕ АГЕНТА</span><h2>Объясните задачу<br/>как коллеге</h2><p>Без схем и сложных настроек. Клубок сам предложит роль, инструменты и безопасные границы.</p></div><div className="chat-card"><div className="chat-top"><span>Новый агент</span><i>Настройка</i></div><div className="bubble">Хочу, чтобы каждое утро агент собирал новые материалы по моим проектам и оставлял короткую сводку.</div><div className="agent-reply"><b>Клубок предлагает</b><h3>Утренний исследователь</h3><div className="chips"><span>Будни, 08:30</span><span>Web + Drive</span><span>Только черновики</span></div><button>Создать агента →</button></div></div></section>
+      <section className="setup reveal"><div className="setup-copy"><span className="plain-label">СОЗДАНИЕ АГЕНТА</span><h2>Объясните задачу<br/>как коллеге</h2><p>Клубок сам разложит запрос на роль, источники и правила. Пройдите три шага в прототипе справа.</p></div><AgentBuilder/></section>
 
       <UseCases/>
 
