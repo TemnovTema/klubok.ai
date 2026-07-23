@@ -79,6 +79,81 @@ function UseCases(){
   return <section id="cases" className="cases"><div className="cases-title reveal"><h2>Освободите внимание<br/>для сложного</h2><p>Не ещё один чат, а исполнители для повторяющейся цифровой работы.</p></div><div className="case-grid reveal">{tasks.map((task,i)=><button key={task.title} className={'case '+(active===i?'active':'')} onClick={()=>setActive(i)} aria-expanded={active===i}><img src={task.image} alt=""/><span className="case-shade"/><span className="case-number">0{i+1}</span><div className="case-copy"><h3>{task.title}</h3><p>{task.copy}</p><b>{task.result}</b></div></button>)}</div></section>
 }
 
+const userStories = [
+  {
+    id:'studio',
+    person:'Марина',
+    role:'Руководит дизайн-студией',
+    quote:'Утро начиналось не с проектов, а с восстановления контекста.',
+    before:[
+      ['47','сообщений в шести переписках'],
+      ['08','обещаний клиентам нужно найти'],
+      ['03','подрядчиков сравнить к созвону'],
+    ],
+    task:'Каждое утро разбери новые переписки, собери обещания и дедлайны. Подготовь ответы и найди подрядчиков по открытым задачам.',
+    steps:[
+      ['08:31','Разобрал переписки','Связал сообщения с четырьмя активными проектами'],
+      ['08:36','Собрал обязательства','Нашёл 8 обещаний и 3 изменившихся срока'],
+      ['08:44','Подготовил действия','6 ответов, шорт-лист подрядчиков и обновлённый план'],
+    ],
+    result:['18 мин','на проверку вместо 2 ч 40 мин'],
+    outcome:'Марина согласовала ответы и начала день с решений, а не с поиска контекста.',
+  },
+  {
+    id:'product',
+    person:'Илья',
+    role:'Развивает B2B-продукт',
+    quote:'Исследование рынка всё время проигрывало срочным встречам.',
+    before:[
+      ['19','источников лежат в разных вкладках'],
+      ['05','интервью нужно свести в выводы'],
+      ['01','статус для команды до пятницы'],
+    ],
+    task:'Собери изменения у конкурентов, сопоставь их с интервью клиентов и подготовь продуктовую сводку со ссылками на источники.',
+    steps:[
+      ['10:10','Проверил источники','Отделил обновления продуктов от маркетинговых заявлений'],
+      ['10:28','Нашёл связи','Сопоставил сигналы рынка с пятью интервью клиентов'],
+      ['10:41','Собрал решение','Сводка, таблица доказательств и три гипотезы для команды'],
+    ],
+    result:['31 мин','до готового брифа вместо половины дня'],
+    outcome:'Илья пришёл на встречу с проверенными фактами и обсуждал приоритеты, а не собирал ссылки.',
+  },
+]
+
+function UserStories(){
+  const [active,setActive]=useState(0)
+  const story=userStories[active]
+  return <section id="stories" className="stories">
+    <div className="stories-heading reveal">
+      <span className="plain-label">ИСТОРИИ РАБОЧЕГО ДНЯ</span>
+      <h2>Рутина занимала утро.<br/><em>Теперь — несколько решений.</em></h2>
+      <p>Два примера того, как Клубок забирает разрозненную цифровую работу и возвращает готовый результат.</p>
+    </div>
+    <div className="story-switch reveal" role="tablist" aria-label="Истории пользователей">
+      {userStories.map((item,i)=><button key={item.id} role="tab" aria-selected={active===i} className={active===i?'active':''} onClick={()=>setActive(i)}><i>0{i+1}</i><span><b>{item.person}</b><small>{item.role}</small></span></button>)}
+    </div>
+    <article className="story-board reveal" key={story.id}>
+      <div className="story-before">
+        <span className="story-stage">ДО КЛУБКА · 08:30</span>
+        <blockquote>«{story.quote}»</blockquote>
+        <div className="routine-stack">{story.before.map(([value,label])=><div key={label}><b>{value}</b><span>{label}</span></div>)}</div>
+      </div>
+      <div className="story-agent">
+        <div className="story-request"><small>ЗАДАЧА АГЕНТУ</small><p>{story.task}</p></div>
+        <div className="story-run">{story.steps.map(([time,title,copy],i)=><div className="story-step" key={time}><span>{time}</span><i>{i+1}</i><div><b>{title}</b><p>{copy}</p></div></div>)}</div>
+      </div>
+      <div className="story-after">
+        <span className="story-stage">ПОСЛЕ · РЕЗУЛЬТАТ ГОТОВ</span>
+        <strong>{story.result[0]}</strong>
+        <small>{story.result[1]}</small>
+        <p>{story.outcome}</p>
+        <div className="story-done"><i>✓</i><span>Осталось только подтвердить</span></div>
+      </div>
+    </article>
+    <p className="story-note">Иллюстративные сценарии. Результат зависит от задачи, источников и заданного уровня автономности.</p>
+  </section>
+}
+
 function ControlSection(){
   const [level,setLevel]=useState(2)
   const phoneState=[
@@ -132,6 +207,8 @@ function App(){
       <section className="setup reveal"><div className="setup-copy"><span className="plain-label">СОЗДАНИЕ АГЕНТА</span><h2>Объясните задачу<br/>как коллеге</h2><p>Клубок сам разложит запрос на роль, источники и правила. Пройдите три шага в интерактивном прототипе.</p></div><AgentBuilder/></section>
 
       <UseCases/>
+
+      <UserStories/>
 
       <ControlSection/>
 
