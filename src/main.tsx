@@ -3,9 +3,9 @@ import { createRoot } from 'react-dom/client'
 import './styles.css'
 
 const tasks = [
-  {title:'Ресерч',copy:'Находит источники, проверяет факты и собирает вывод, с которым можно работать.',result:'12 источников собрано',image:'/assets/usecase-research.webp'},
-  {title:'Письма',copy:'Разбирает входящие, учитывает контекст проекта и готовит ответы в вашем тоне.',result:'3 ответа готовы',image:'/assets/usecase-messages.webp'},
-  {title:'Расписание',copy:'Перестраивает день при изменении приоритетов и защищает время для фокусной работы.',result:'План дня обновлён',image:'/assets/usecase-schedule.webp'},
+  {title:'Ресерч',copy:'Находит источники, проверяет факты и собирает вывод, с которым можно работать.',result:'12 источников собрано',image:'/assets/usecase-research-v2.png'},
+  {title:'Письма',copy:'Разбирает входящие, учитывает контекст проекта и готовит ответы в вашем тоне.',result:'3 ответа готовы',image:'/assets/usecase-messages-v2.png'},
+  {title:'Расписание',copy:'Перестраивает день при изменении приоритетов и защищает время для фокусной работы.',result:'План дня обновлён',image:'/assets/usecase-schedule-v2.png'},
 ]
 
 function Logo(){ return <a className="logo" href="#top" aria-label="Клубок, на главную"><span>клубок</span><i>.ai</i></a> }
